@@ -5,7 +5,7 @@ a subclass of UIButton with a countdown NSTimer to change the button title
 Demo
 ###
 
-<img src="https://github.com/andy380743909/ADCountDownButton/raw/master/screenshot-1.png" style="width:320px;">
+<img src="https://github.com/andy380743909/ADCountDownButton/raw/master/ScreenShots/screenshot-1.png" style="width:320px;">
 
 
 Usage
