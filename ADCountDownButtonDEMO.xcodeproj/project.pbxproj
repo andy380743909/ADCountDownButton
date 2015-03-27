@@ -15,6 +15,7 @@
 		D26958AA1AC5247A00D1DED9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D26958A81AC5247A00D1DED9 /* LaunchScreen.xib */; };
 		D26958B61AC5247A00D1DED9 /* ADCountDownButtonDEMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D26958B51AC5247A00D1DED9 /* ADCountDownButtonDEMOTests.m */; };
 		D26958C21AC524A400D1DED9 /* ADCountDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D26958C11AC524A400D1DED9 /* ADCountDownButton.m */; };
+		D26958C81AC528A400D1DED9 /* screenshot-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D26958C71AC528A400D1DED9 /* screenshot-1.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		D26958B51AC5247A00D1DED9 /* ADCountDownButtonDEMOTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ADCountDownButtonDEMOTests.m; sourceTree = "<group>"; };
 		D26958C01AC524A400D1DED9 /* ADCountDownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADCountDownButton.h; sourceTree = "<group>"; };
 		D26958C11AC524A400D1DED9 /* ADCountDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADCountDownButton.m; sourceTree = "<group>"; };
+		D26958C71AC528A400D1DED9 /* screenshot-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screenshot-1.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		D269588D1AC5247A00D1DED9 = {
 			isa = PBXGroup;
 			children = (
+				D26958C61AC528A400D1DED9 /* ScreenShots */,
 				D26958BF1AC524A400D1DED9 /* ADCountDownButton */,
 				D26958981AC5247A00D1DED9 /* ADCountDownButtonDEMO */,
 				D26958B21AC5247A00D1DED9 /* ADCountDownButtonDEMOTests */,
@@ -130,6 +133,14 @@
 				D26958C11AC524A400D1DED9 /* ADCountDownButton.m */,
 			);
 			path = ADCountDownButton;
+			sourceTree = "<group>";
+		};
+		D26958C61AC528A400D1DED9 /* ScreenShots */ = {
+			isa = PBXGroup;
+			children = (
+				D26958C71AC528A400D1DED9 /* screenshot-1.png */,
+			);
+			path = ScreenShots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +226,7 @@
 				D26958A51AC5247A00D1DED9 /* Main.storyboard in Resources */,
 				D26958AA1AC5247A00D1DED9 /* LaunchScreen.xib in Resources */,
 				D26958A71AC5247A00D1DED9 /* Images.xcassets in Resources */,
+				D26958C81AC528A400D1DED9 /* screenshot-1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,6 +438,7 @@
 				D26958BB1AC5247A00D1DED9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D26958BC1AC5247A00D1DED9 /* Build configuration list for PBXNativeTarget "ADCountDownButtonDEMOTests" */ = {
 			isa = XCConfigurationList;
@@ -434,6 +447,7 @@
 				D26958BE1AC5247A00D1DED9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
