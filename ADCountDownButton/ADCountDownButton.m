@@ -46,7 +46,7 @@ typedef NS_ENUM(NSUInteger, ADCountDownButtonState){
 
 - (void)commonInit{
     
-    [self addTarget:self action:@selector(countDownButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+//    [self addTarget:self action:@selector(countDownButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
 }
 
@@ -157,8 +157,7 @@ typedef NS_ENUM(NSUInteger, ADCountDownButtonState){
         
     }else{
         
-        [self invalidTimer];
-        self.countState = ADCountDownButtonStateNormal;
+        [self reset];
         if (self.finishedBlock) {
             self.finishedBlock(weakSelf,YES);
         }
