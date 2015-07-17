@@ -1,21 +1,22 @@
 //
-//  ADCountDownButton.m
-//  MMBangADDemoProject
+//  ADCountDowner.m
+//  ADCountDownButtonDEMO
 //
-//  Created by CuiPanJun on 15-3-27.
+//  Created by CuiPanJun on 15/5/21.
 //  Copyright (c) 2015年 CuiPanJun. All rights reserved.
 //
 
-#import "ADCountDownButton.h"
 
-typedef NS_ENUM(NSUInteger, ADCountDownButtonState){
-    ADCountDownButtonStateNormal    = 0,
-    ADCountDownButtonStateCounting  = 1
+#import "ADCountDowner.h"
+
+typedef NS_ENUM(NSUInteger, ADCountDownerState){
+    ADCountDownerStateNormal    = 0,
+    ADCountDownerStateCounting  = 1
 };
 
-@interface ADCountDownButton ()
+@interface ADCountDowner ()
 
-@property (nonatomic, assign) ADCountDownButtonState countState;
+@property (nonatomic, assign) ADCountDownerState countState;
 
 @property (nonatomic, assign) NSTimer *timer;
 
@@ -24,46 +25,11 @@ typedef NS_ENUM(NSUInteger, ADCountDownButtonState){
 
 @end
 
-@implementation ADCountDownButton
-
-- (void)dealloc{
-    [self invalidTimer];
-    
-}
-
-- (void)awakeFromNib{
-    [super awakeFromNib];
-    [self commonInit];
-}
-
-- (instancetype)initWithFrame:(CGRect)frame{
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self commonInit];
-    }
-    return self;
-}
+@implementation ADCountDowner
 
 - (void)commonInit{
     
-//    [self addTarget:self action:@selector(countDownButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
 }
-
-
-#pragma mark - Action
-
-- (void)countDownButtonClicked:(id)sender{
-    [self start];
-}
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
 - (void)setupTimer{
     if (_timer) {
@@ -99,7 +65,7 @@ typedef NS_ENUM(NSUInteger, ADCountDownButtonState){
         return;
     }
     
-    self.countState = ADCountDownButtonStateCounting;
+    self.countState = ADCountDownerStateCounting;
     [self setupExpireTime];
     __weak __typeof(self)weakSelf = self;
     if (self.willStartBlock) {
@@ -113,7 +79,7 @@ typedef NS_ENUM(NSUInteger, ADCountDownButtonState){
 
 - (void)stop
 {
-    self.countState = ADCountDownButtonStateNormal;
+    self.countState = ADCountDownerStateNormal;
     [self invalidTimer];
     __weak __typeof(self)weakSelf = self;
     if (self.finishedBlock) {
@@ -123,7 +89,7 @@ typedef NS_ENUM(NSUInteger, ADCountDownButtonState){
 
 - (void)reset{
     [self invalidTimer];
-    self.countState = ADCountDownButtonStateNormal;
+    self.countState = ADCountDownerStateNormal;
     self.didSetExpireTimeInterval = NO;
     
 }
@@ -166,25 +132,25 @@ typedef NS_ENUM(NSUInteger, ADCountDownButtonState){
 
 #pragma mark - State
 
-- (void)setCountState:(ADCountDownButtonState)countState{
-    
-    switch (countState) {
-        case ADCountDownButtonStateNormal:
-            
-            self.enabled = YES;
-            
-            break;
-        case ADCountDownButtonStateCounting:
-            
-            self.enabled = NO;
-            
-            break;
-        default:
-            break;
-    }
-    
-    
-}
+//- (void)setCountState:(ADCountDownerState)countState{
+//    
+//    switch (countState) {
+//        case ADCountDownerStateNormal:
+//            
+//            self.enabled = YES;
+//            
+//            break;
+//        case ADCountDownerStateCounting:
+//            
+//            self.enabled = NO;
+//            
+//            break;
+//        default:
+//            break;
+//    }
+//    
+//    
+//}
 
 #pragma mark - Property
 
@@ -204,7 +170,8 @@ typedef NS_ENUM(NSUInteger, ADCountDownButtonState){
 }
 
 - (BOOL)counting{
-    return self.countState == ADCountDownButtonStateCounting;
+    return self.countState == ADCountDownerStateCounting;
 }
+
 
 @end

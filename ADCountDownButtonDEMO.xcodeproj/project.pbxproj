@@ -16,6 +16,7 @@
 		D26958B61AC5247A00D1DED9 /* ADCountDownButtonDEMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D26958B51AC5247A00D1DED9 /* ADCountDownButtonDEMOTests.m */; };
 		D26958C21AC524A400D1DED9 /* ADCountDownButton.m in Sources */ = {isa = PBXBuildFile; fileRef = D26958C11AC524A400D1DED9 /* ADCountDownButton.m */; };
 		D26958C81AC528A400D1DED9 /* screenshot-1.png in Resources */ = {isa = PBXBuildFile; fileRef = D26958C71AC528A400D1DED9 /* screenshot-1.png */; };
+		D297D5A41B0D841D004498DB /* ADCountDowner.m in Sources */ = {isa = PBXBuildFile; fileRef = D297D5A31B0D841D004498DB /* ADCountDowner.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,8 @@
 		D26958C01AC524A400D1DED9 /* ADCountDownButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADCountDownButton.h; sourceTree = "<group>"; };
 		D26958C11AC524A400D1DED9 /* ADCountDownButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADCountDownButton.m; sourceTree = "<group>"; };
 		D26958C71AC528A400D1DED9 /* screenshot-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "screenshot-1.png"; sourceTree = "<group>"; };
+		D297D5A21B0D841D004498DB /* ADCountDowner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ADCountDowner.h; path = ADCountDownButton/ADCountDowner.h; sourceTree = "<group>"; };
+		D297D5A31B0D841D004498DB /* ADCountDowner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ADCountDowner.m; path = ADCountDownButton/ADCountDowner.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +71,8 @@
 		D269588D1AC5247A00D1DED9 = {
 			isa = PBXGroup;
 			children = (
+				D297D5A21B0D841D004498DB /* ADCountDowner.h */,
+				D297D5A31B0D841D004498DB /* ADCountDowner.m */,
 				D26958C61AC528A400D1DED9 /* ScreenShots */,
 				D26958BF1AC524A400D1DED9 /* ADCountDownButton */,
 				D26958981AC5247A00D1DED9 /* ADCountDownButtonDEMO */,
@@ -246,6 +251,7 @@
 			files = (
 				D26958C21AC524A400D1DED9 /* ADCountDownButton.m in Sources */,
 				D26958A21AC5247A00D1DED9 /* ViewController.m in Sources */,
+				D297D5A41B0D841D004498DB /* ADCountDowner.m in Sources */,
 				D269589F1AC5247A00D1DED9 /* AppDelegate.m in Sources */,
 				D269589C1AC5247A00D1DED9 /* main.m in Sources */,
 			);

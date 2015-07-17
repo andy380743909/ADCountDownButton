@@ -9,7 +9,11 @@
 #import "ViewController.h"
 #import "ADCountDownButton.h"
 
-@interface ViewController ()
+#import "ADCountDowner.h"
+
+@interface ViewController ()<UIAlertViewDelegate>
+
+@property (nonatomic, strong) ADCountDowner *countdowner;
 
 @end
 
@@ -85,6 +89,55 @@
     
     [self.view addSubview:countButton];
     
+    
+    CGRect bounds = self.view.bounds;
+    
+    UIButton *skipButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    skipButton.frame = CGRectMake(CGRectGetWidth(bounds) - 100 - 30, 20, 100, 26);
+    skipButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleTopMargin;
+    
+    [skipButton setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.3]];
+    CALayer *buttonLayer = skipButton.layer;
+    buttonLayer.cornerRadius = 5;
+    buttonLayer.masksToBounds = YES;
+    
+    [skipButton addTarget:self action:@selector(skipButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:skipButton];
+    
+    // ADCountDowner
+    
+    self.countdowner = [[ADCountDowner alloc] init];
+    self.countdowner.totalTime = 10.0f;
+    
+    self.countdowner.willStartBlock = ^(ADCountDowner *counter){
+    
+    };
+    
+    self.countdowner.didStartBlock = ^(ADCountDowner *counter){
+        NSString *timeLeftString = [NSString stringWithFormat:@"%0.f 跳过",counter.secondsLeft];
+        [skipButton setTitle:timeLeftString forState:UIControlStateNormal];
+        [skipButton setTitle:timeLeftString forState:UIControlStateDisabled];
+    };
+    self.countdowner.updatedBlock = ^(ADCountDowner *counter){
+        NSString *timeLeftString = [NSString stringWithFormat:@"%0.f 跳过",counter.secondsLeft];
+        [skipButton setTitle:timeLeftString forState:UIControlStateNormal];
+        [skipButton setTitle:timeLeftString forState:UIControlStateDisabled];
+    };
+    self.countdowner.finishedBlock = ^(ADCountDowner *counter, BOOL finished){
+        NSString *titleString = @"跳过";
+        [skipButton setTitle:titleString forState:UIControlStateNormal];
+        [skipButton setTitle:titleString forState:UIControlStateDisabled];
+        
+        // 如果是调用stop方法 导致finishedBlock被触发，
+        if (!finished) {
+            [counter reset];
+        }
+    };
+    
+    [self.countdowner start];
+    
+    
 }
 
 - (void)updateTimer{
@@ -95,9 +148,37 @@
 
 - (void)getCaptcha:(id)sender{
     
+    ADCountDownButton *button = (ADCountDownButton *)sender;
+    [button start];
+    
     NSLog(@"send request ..........");
     
 }
+
+- (void)skipButtonClicked:(id)sender{
+    
+    if ([self.countdowner counting]) {
+        UIAlertView *skipAlert = [[UIAlertView alloc] initWithTitle:@""
+                                                            message:@"你确定要跳过吗？"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"不，谢谢"
+                                                  otherButtonTitles:@"跳过", nil];
+        
+        [skipAlert show];
+    }else{
+        [self.countdowner start];
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        
+    }
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
