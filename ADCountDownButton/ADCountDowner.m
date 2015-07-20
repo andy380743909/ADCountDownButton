@@ -11,7 +11,8 @@
 
 typedef NS_ENUM(NSUInteger, ADCountDownerState){
     ADCountDownerStateNormal    = 0,
-    ADCountDownerStateCounting  = 1
+    ADCountDownerStateCounting  = 1,
+    ADCountDownerStateStop      = 2
 };
 
 @interface ADCountDowner ()
@@ -79,8 +80,7 @@ typedef NS_ENUM(NSUInteger, ADCountDownerState){
 
 - (void)stop
 {
-    self.countState = ADCountDownerStateNormal;
-    [self invalidTimer];
+    [self stopCount];
     __weak __typeof(self)weakSelf = self;
     if (self.finishedBlock) {
         self.finishedBlock(weakSelf, NO);
@@ -94,7 +94,15 @@ typedef NS_ENUM(NSUInteger, ADCountDownerState){
     
 }
 
+- (BOOL)isValid{
+    return !(self.didSetExpireTimeInterval && ([self secondsLeft] <= 0));
+}
 
+// private
+- (void)stopCount{
+    [self invalidTimer];
+    self.countState = ADCountDownerStateStop;
+}
 
 - (void)setupExpireTime{
     if (self.didSetExpireTimeInterval) {
@@ -105,9 +113,6 @@ typedef NS_ENUM(NSUInteger, ADCountDownerState){
     
 }
 
-- (BOOL)isValid{
-    return !(self.didSetExpireTimeInterval && ([self secondsLeft] <= 0));
-}
 
 - (void)updateTimer
 {
@@ -123,7 +128,7 @@ typedef NS_ENUM(NSUInteger, ADCountDownerState){
         
     }else{
         
-        [self reset];
+        [self stopCount];
         if (self.finishedBlock) {
             self.finishedBlock(weakSelf,YES);
         }
@@ -131,26 +136,6 @@ typedef NS_ENUM(NSUInteger, ADCountDownerState){
 }
 
 #pragma mark - State
-
-//- (void)setCountState:(ADCountDownerState)countState{
-//    
-//    switch (countState) {
-//        case ADCountDownerStateNormal:
-//            
-//            self.enabled = YES;
-//            
-//            break;
-//        case ADCountDownerStateCounting:
-//            
-//            self.enabled = NO;
-//            
-//            break;
-//        default:
-//            break;
-//    }
-//    
-//    
-//}
 
 #pragma mark - Property
 
@@ -166,6 +151,9 @@ typedef NS_ENUM(NSUInteger, ADCountDownerState){
     if (self.didSetExpireTimeInterval) {
         left  = self.expireTimeInterval - [[NSDate date] timeIntervalSince1970];
     }
+    if (left <= 0.0f) {
+        left = 0.0f;
+    }
     return left;
 }
 
@@ -173,5 +161,8 @@ typedef NS_ENUM(NSUInteger, ADCountDownerState){
     return self.countState == ADCountDownerStateCounting;
 }
 
+- (BOOL)stopped{
+    return self.countState == ADCountDownerStateStop;
+}
 
 @end

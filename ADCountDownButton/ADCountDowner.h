@@ -31,4 +31,7 @@ typedef void(^ADCountDownerFinishedBlock) (ADCountDowner *countdowner, BOOL fini
 - (void)stop; // pause
 - (void)reset;
 
+- (BOOL)isValid;
+- (BOOL)stopped;
+
 @end
